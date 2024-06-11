@@ -1,0 +1,125 @@
+[gd_scene load_steps=11 format=3 uid="uid://hglcob7vh84p"]
+
+[ext_resource type="Texture2D" uid="uid://w04dyc2vu6lo" path="res://icon.svg" id="1_0rso2"]
+[ext_resource type="Script" path="res://ShowLogo.gd" id="2_j5ike"]
+[ext_resource type="Script" path="res://Timer.gd" id="3_f4vwj"]
+[ext_resource type="Script" path="res://FPS.gd" id="4_e2ay6"]
+[ext_resource type="AudioStream" uid="uid://jua25ea00k76" path="res://Beep.wav" id="5_etkln"]
+[ext_resource type="Script" path="res://Beeper.gd" id="6_2qqy8"]
+[ext_resource type="Script" path="res://VSyncSwitch.gd" id="7_471n6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2flp2"]
+font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_hufj4"]
+font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_uo5d2"]
+font_size = 24
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -110.5
+offset_right = 110.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "SIMPLE MONITOR LAG TESTER KIT
+Powered by Godot Engine
+PRESS \"F\" TO BEEP"
+label_settings = SubResource("LabelSettings_2flp2")
+horizontal_alignment = 1
+
+[node name="LOGO" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0rso2")
+script = ExtResource("2_j5ike")
+
+[node name="Timer" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.5
+offset_top = 76.0
+offset_right = 151.5
+offset_bottom = 126.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "11:45:14.1919810"
+label_settings = SubResource("LabelSettings_hufj4")
+script = ExtResource("3_f4vwj")
+
+[node name="FPS" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = -114.0
+offset_right = 41.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "FPS: 60"
+label_settings = SubResource("LabelSettings_uo5d2")
+script = ExtResource("4_e2ay6")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = -28.0
+offset_right = 522.0
+offset_bottom = -5.0
+grow_vertical = 0
+text = "This software kit is licenced under MIT. (C) 2024 SHIYUKI Software."
+
+[node name="Beeper" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_etkln")
+script = ExtResource("6_2qqy8")
+
+[node name="VSyncSwitch" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -187.0
+offset_top = -38.0
+offset_right = -8.99976
+offset_bottom = -7.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Disable/Enable V-Sync"
+script = ExtResource("7_471n6")
+
+[connection signal="pressed" from="VSyncSwitch" to="VSyncSwitch" method="_button_pressed"]
